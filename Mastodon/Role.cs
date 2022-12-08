@@ -6,7 +6,7 @@ public sealed class Role
     /// <summary>
     /// The ID of the Role in the database.
     /// </summary>
-    public required int Id { get; set; }
+    public required string Id { get; set; }
 
     /// <summary>
     /// The name of the role.
