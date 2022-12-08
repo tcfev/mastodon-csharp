@@ -10,7 +10,8 @@ namespace Mastodon;
 
 public sealed partial class MastodonClient
 {
-    private readonly HttpClient _client;
+    internal readonly HttpClient http;
+    public readonly TimelineClient Timeline;
 
     static JsonSerializerOptions _options = new System.Text.Json.JsonSerializerOptions
     {
@@ -19,12 +20,8 @@ public sealed partial class MastodonClient
     };
     public MastodonClient(Uri baseAddress)
     {
-        _client = new HttpClient { BaseAddress = baseAddress };
-    }
-
-    public Task<List<Status>?> GetPublicTimelineAsync()
-    {
-        return _client.GetFromJsonAsync<List<Status>>("api/v1/timelines/public", _options);
+        http = new HttpClient { BaseAddress = baseAddress };
+        Timeline = new TimelineClient(this);
     }
 
 
