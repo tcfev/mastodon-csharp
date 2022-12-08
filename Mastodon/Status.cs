@@ -177,7 +177,7 @@ public sealed class Status
         public string? Website { get; set; }
     }
 
-        public sealed class Mention
+    public sealed class Mention
     {
         /// <summary>
         /// The account ID of the mentioned user (cast from an integer, but not guaranteed to be a number).
@@ -198,18 +198,5 @@ public sealed class Status
         /// The webfinger acct: URI of the mentioned user. Equivalent to username for local users, or username@domain for remote users.
         /// </summary>
         public required string Acct { get; set; }
-    }
-
-    public sealed class Tag
-    {
-        /// <summary>
-        /// The value of the hashtag after the # sign.
-        /// </summary>
-        public required string Name { get; set; }
-
-        /// <summary>
-        /// A link to the hashtag on the instance.
-        /// </summary>
-        public required string Url { get; set; }
     }
 }
