@@ -85,7 +85,7 @@ public sealed class Account
     /// <summary>
     /// Whether the account has opted into discovery features such as the profile directory.
     /// </summary>
-    public bool Discoverable { get; set; }
+    public bool? Discoverable { get; set; }
 
     /// <summary>
     /// Indicates that the profile is currently inactive and that its user has moved to a new account.
