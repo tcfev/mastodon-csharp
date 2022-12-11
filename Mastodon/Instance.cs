@@ -22,7 +22,7 @@ public sealed class Instance
     /// <summary>
     /// The URL for the source code of the software running on this instance, in keeping with AGPL license requirements.
     /// </summary>
-    public required string SourceUrl { get; set; }
+    public string? SourceUrl { get; set; }
 
     /// <summary>
     /// A short, plain-text description defined by the admin.
@@ -162,7 +162,7 @@ public sealed class Instance
         /// <summary>
         /// Hints for which attachments will be accepted.
         /// </summary>
-        public required MediaAttachmentsHash MediaAttachments { get; set; }
+        public MediaAttachmentsHash? MediaAttachments { get; set; }
 
         /// <summary>
         /// Limits related to polls.
@@ -193,7 +193,7 @@ public sealed class Instance
             /// <summary>
             /// The maximum number of featured tags allowed for each account.
             /// </summary>
-            public required int MaxFeaturedTags { get; set; }
+            public int? MaxFeaturedTags { get; set; }
         }
 
         /// <summary>
@@ -204,17 +204,17 @@ public sealed class Instance
             /// <summary>
             /// The maximum number of allowed characters per status.
             /// </summary>
-            public required int MaxCharacters { get; set; }
+            public int? MaxCharacters { get; set; }
 
             /// <summary>
             /// The maximum number of media attachments that can be added to a status.
             /// </summary>
-            public required int MaxMediaAttachments { get; set; }
+            public int? MaxMediaAttachments { get; set; }
 
             /// <summary>
             /// Each URL in a status will be assumed to be exactly this many characters.
             /// </summary>
-            public required int CharactersReservedPerUrl { get; set; }
+            public int? CharactersReservedPerUrl { get; set; }
         }
 
         /// <summary>
@@ -261,22 +261,22 @@ public sealed class Instance
             /// <summary>
             /// Each poll is allowed to have up to this many options.
             /// </summary>
-            public required int MaxOptions { get; set; }
+            public int? MaxOptions { get; set; }
 
             /// <summary>
             /// Each poll option is allowed to have this many characters.
             /// </summary>
-            public required int MaxCharactersPerOption { get; set; }
+            public int? MaxCharactersPerOption { get; set; }
 
             /// <summary>
             /// The shortest allowed poll duration, in seconds.
             /// </summary>
-            public required int MinExpiration { get; set; }
+            public int? MinExpiration { get; set; }
 
             /// <summary>
             /// The longest allowed poll duration, in seconds.
             /// </summary>
-            public required int MaxExpiration { get; set; }
+            public int? MaxExpiration { get; set; }
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ public sealed class Instance
         /// <summary>
         /// Whether registrations require moderator approval.
         /// </summary>
-        public required bool ApprovalRequired { get; set; }
+        public bool? ApprovalRequired { get; set; }
 
         /// <summary>
         /// A custom message to be shown when registrations are closed.

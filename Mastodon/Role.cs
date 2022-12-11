@@ -21,25 +21,25 @@ public sealed class Role
     /// <summary>
     /// An index for the role’s position. The higher the position, the more priority the role has over other roles.
     /// </summary>
-    public required int Position { get; set; }
+    public int? Position { get; set; }
 
     /// <summary>
     /// A bitmask that represents the sum of all permissions granted to the role.
     /// </summary>
-    public required int Permissions { get; set; }
+    public int? Permissions { get; set; }
 
     /// <summary>
     /// Whether the role is publicly visible as a badge on user profiles.
     /// </summary>
-    public required bool Highlighted { get; set; }
+    public bool? Highlighted { get; set; }
 
     /// <summary>
     /// The date that the role was created.
     /// </summary>
-    public required DateTime CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
     /// <summary>
     /// The date that the role was updated.
     /// </summary>
-    public required DateTime UpdatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 }
