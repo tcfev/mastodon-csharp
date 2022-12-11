@@ -18,12 +18,12 @@ public sealed class CustomEmoji
     /// <summary>
     /// A link to a static copy of the custom emoji.
     /// </summary>
-    public required string StaticUrl { get; set; }
+    public string? StaticUrl { get; set; }
 
     /// <summary>
     /// Whether this Emoji should be visible in the picker or unlisted.
     /// </summary>
-    public required bool VisibleInPicker { get; set; }
+    public bool? VisibleInPicker { get; set; }
 
     /// <summary>
     /// Used for sorting custom emoji in the picker.

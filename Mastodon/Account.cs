@@ -30,7 +30,7 @@ public sealed class Account
     /// <summary>
     /// The profile’s display name.
     /// </summary>
-    public required string DisplayName { get; set; }
+    public string? DisplayName { get; set; }
 
     /// <summary>
     /// The profile’s bio or description.
@@ -45,7 +45,7 @@ public sealed class Account
     /// <summary>
     /// A static version of the avatar. Equal to avatar if its value is a static image; different if avatar is an animated GIF.
     /// </summary>
-    public required string AvatarStatic { get; set; }
+    public string? AvatarStatic { get; set; }
 
     /// <summary>
     /// An image banner that is shown above the profile and in profile cards.
@@ -55,7 +55,7 @@ public sealed class Account
     /// <summary>
     /// A static version of the header. Equal to header if its value is a static image; different if header is an animated GIF.
     /// </summary>
-    public required string HeaderStatic { get; set; }
+    public string? HeaderStatic { get; set; }
 
     /// <summary>
     /// Whether the account manually approves follow requests.
@@ -105,7 +105,7 @@ public sealed class Account
     /// <summary>
     /// When the account was created.
     /// </summary>
-    public required DateTime CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
     /// <summary>
     /// When the most recent status was posted.
@@ -115,16 +115,16 @@ public sealed class Account
     /// <summary>
     /// How many statuses are attached to this account.
     /// </summary>
-    public required uint StatusesCount { get; set; }
+    public uint? StatusesCount { get; set; }
     /// <summary>
     /// The reported followers of this profile.
     /// </summary>
-    public required uint FollowersCount { get; set; }
+    public uint? FollowersCount { get; set; }
 
     /// <summary>
     /// The reported follows of this profile.
     /// </summary>
-    public required uint FollowingCount { get; set; }
+    public uint? FollowingCount { get; set; }
 
     /// <summary>
     /// An extra attribute that contains source values to be used with API methods that verify credentials and update credentials.

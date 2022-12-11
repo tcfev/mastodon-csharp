@@ -24,6 +24,11 @@ public sealed partial class MastodonClient
         Timeline = new TimelineClient(this);
     }
 
+    public Task<Instance?> GetInstanceAsync()
+    {
+        return http.GetFromJsonAsync<Instance>("api/v2/instance");
+    }
+
 
     private sealed class SnakeCaseNamingPolicy : JsonNamingPolicy
     {
