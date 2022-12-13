@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a keyword that, if matched, should cause the filter action to be taken.
 /// </summary>
-public sealed class FilterKeyword
+public sealed partial class FilterKeyword
 {
     /// <summary>
     /// The ID of the FilterKeyword in the database.

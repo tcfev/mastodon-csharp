@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a user-defined filter for determining which statuses should not be shown to the user.
 /// </summary>
-public sealed class Filter
+public sealed partial class Filter
 {
     /// <summary>
     /// The ID of the Filter in the database.

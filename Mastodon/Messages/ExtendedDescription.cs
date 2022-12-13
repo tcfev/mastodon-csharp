@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents an extended description for the instance, to be shown on its about page.
 /// </summary>
-public sealed class ExtendedDescription
+public sealed partial class ExtendedDescription
 {
     /// <summary>
     /// A timestamp of when the extended description was last updated.

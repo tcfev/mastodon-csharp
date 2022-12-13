@@ -3,7 +3,7 @@
 /// <summary>
 /// Reports filed against users and/or statuses, to be taken action on by moderators.
 /// </summary>
-public sealed class Report
+public sealed partial class Report
 {
     /// <summary>
     /// The ID of the report in the database.

@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a file or media attachment that can be added to a status.
 /// </summary>
-public sealed class MediaAttachment
+public sealed partial class MediaAttachment
 {
     /// <summary>
     /// The ID of the attachment in the database.
@@ -60,7 +60,7 @@ public sealed class MediaAttachment
     /// May contain subtrees small and original, as well as various other top-level properties.
     /// More importantly, there may be another topl-level focus Hash object on images as of 2.3.0, with coordinates can be used for smart thumbnail cropping – see Focal points for cropped media thumbnails for more.
     /// </summary>
-    public sealed class MetaHash
+    public sealed partial class MetaHash
     {
         public string? Length { get; set; }
         public float? Duration { get; set; }
@@ -75,7 +75,7 @@ public sealed class MediaAttachment
         public OriginalHash? Original { get; set; }
         public SmallHash? Small { get; set; }
 
-        public sealed class OriginalHash
+        public sealed partial class OriginalHash
         {
             public int Width { get; set; }
             public int Height { get; set; }
@@ -84,7 +84,7 @@ public sealed class MediaAttachment
             public int? Bitrate { get; set; }
         }
 
-        public sealed class SmallHash
+        public sealed partial class SmallHash
         {
             public int Width { get; set; }
             public int Height { get; set; }

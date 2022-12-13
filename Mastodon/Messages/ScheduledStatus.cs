@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a status that will be published at a future scheduled date.
 /// </summary>
-public sealed class ScheduledStatus
+public sealed partial class ScheduledStatus
 {
     /// <summary>
     /// ID of the scheduled status in the database.
@@ -28,7 +28,7 @@ public sealed class ScheduledStatus
     /// <summary>
     /// The parameters to be used when the status is posted.
     /// </summary>
-    public sealed class ParamsHash
+    public sealed partial class ParamsHash
     {
         public string? Text { get; set; }
         public List<string>? MediaIds { get; set; }

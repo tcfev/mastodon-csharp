@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a revision of a status that has been edited.
 /// </summary>
-public sealed class StatusEdit
+public sealed partial class StatusEdit
 {
     /// <summary>
     /// The content of the status at this revision.

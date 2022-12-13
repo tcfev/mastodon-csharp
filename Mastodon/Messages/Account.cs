@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a user of Mastodon and their associated profile.
 /// </summary>
-public sealed class Account
+public sealed partial class Account
 {
     /// <summary>
     /// The account id (cast from an integer, but not guaranteed to be a number).
@@ -134,7 +134,7 @@ public sealed class Account
     /// </summary>
     public Role? Role { get; set; }
 
-    public sealed class MutedAccount
+    public sealed partial class MutedAccount
     {
         /// <summary>
         /// When a timed mute will expire, if applicable.
@@ -142,7 +142,7 @@ public sealed class Account
         public DateTime? MuteExpiresAt { get; set; }
     }
 
-    public sealed class Field
+    public sealed partial class Field
     {
         /// <summary>
         /// The key of a given field’s key-value pair.
@@ -163,7 +163,7 @@ public sealed class Account
     /// <summary>
     /// An extra attribute that contains source values to be used with API methods that verify credentials and update credentials.
     /// </summary>
-    public sealed class AccountSource
+    public sealed partial class AccountSource
     {
         /// <summary>
         /// Profile bio, in plain-text instead of in HTML.

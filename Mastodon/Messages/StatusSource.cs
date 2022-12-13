@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a status's source as plain text.
 /// </summary>
-public sealed class StatusSource
+public sealed partial class StatusSource
 {
     /// <summary>
     /// ID of the status in the database.

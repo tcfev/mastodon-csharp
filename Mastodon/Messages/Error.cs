@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents an error message.
 /// </summary>
-public sealed class ErrorMessage
+public sealed partial class ErrorMessage
 {
     /// <summary>
     /// The error message.

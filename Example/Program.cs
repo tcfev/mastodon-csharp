@@ -1,4 +1,4 @@
-﻿var client = new Mastodon.MastodonClient(new Uri("https://mastodon.lol"));
+﻿var client = new Mastodon.Services.MastodonClient(new Uri("https://mastodon.lol"));
 
 var statuses = await client.Timeline.GetPublicAsync();
 var instance = await client.Instance.GetInstanceAsync();

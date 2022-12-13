@@ -1,6 +1,6 @@
 ﻿namespace Mastodon.Messages;
 
-public sealed class Role
+public sealed partial class Role
 {
     /// <summary>
     /// The ID of the Role in the database.

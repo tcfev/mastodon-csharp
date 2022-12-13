@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a hashtag used within the content of a status.
 /// </summary>
-public sealed class Tag
+public sealed partial class Tag
 {
     /// <summary>
     /// The value of the hashtag after the # sign.
@@ -28,7 +28,7 @@ public sealed class Tag
     /// <summary>
     /// Usage statistics for given days (typically the past week).
     /// </summary>
-    public sealed class TagHistory
+    public sealed partial class TagHistory
     {
         /// <summary>
         /// UNIX timestamp on midnight of the given day.

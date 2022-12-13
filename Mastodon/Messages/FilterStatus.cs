@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a status ID that, if matched, should cause the filter action to be taken.
 /// </summary>
-public sealed class FilterStatus
+public sealed partial class FilterStatus
 {
     /// <summary>
     /// The ID of the FilterStatus in the database.

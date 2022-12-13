@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the results of a search.
 /// </summary>
-public sealed class Search
+public sealed partial class Search
 {
     /// <summary>
     /// Accounts which match the given query.

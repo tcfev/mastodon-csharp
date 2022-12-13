@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a suggested account to follow and an associated reason for the suggestion.
 /// </summary>
-public sealed class Suggestion
+public sealed partial class Suggestion
 {
     /// <summary>
     /// The reason this account is being suggested.

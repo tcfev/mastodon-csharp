@@ -1,6 +1,6 @@
 ﻿namespace Mastodon.Messages;
 
-public sealed class Application
+public sealed partial class Application
 {
     /// <summary>
     /// The name of your application.

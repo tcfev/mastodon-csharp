@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the relationship between accounts, such as following/blocking/muting/etc.
 /// </summary>
-public sealed class Relationship
+public sealed partial class Relationship
 {
     /// <summary>
     /// The account ID.

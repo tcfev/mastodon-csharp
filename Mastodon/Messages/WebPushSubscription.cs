@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a subscription to the push streaming server.
 /// </summary>
-public sealed class WebPushSubscription
+public sealed partial class WebPushSubscription
 {
     /// <summary>
     /// The ID of the Web Push subscription in the database.
@@ -29,7 +29,7 @@ public sealed class WebPushSubscription
     /// <summary>
     /// Which alerts should be delivered to the endpoint.
     /// </summary>
-    public sealed class AlertHash
+    public sealed partial class AlertHash
     {
         /// <summary>
         /// Receive a push notification when someone else has mentioned you in a status?
@@ -72,7 +72,7 @@ public sealed class WebPushSubscription
         /// <summary>
         /// Admin notifications.
         /// </summary>
-        public sealed class AdminHash
+        public sealed partial class AdminHash
         {
             /// <summary>
             /// Receive a push notification when a new user has signed up?

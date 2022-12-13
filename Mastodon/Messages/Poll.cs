@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a poll attached to a status.
 /// </summary>
-public sealed class Poll
+public sealed partial class Poll
 {
     /// <summary>
     /// The ID of the poll in the database.
@@ -55,7 +55,7 @@ public sealed class Poll
     /// </summary>
     public List<int>? OwnVotes { get; set; }
 
-    public sealed class Option
+    public sealed partial class Option
     {
         /// <summary>
         /// The text value of the poll option.

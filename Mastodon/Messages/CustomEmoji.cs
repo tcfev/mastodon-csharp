@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a custom emoji.
 /// </summary>
-public sealed class CustomEmoji
+public sealed partial class CustomEmoji
 {
     /// <summary>
     /// The name of the custom emoji.

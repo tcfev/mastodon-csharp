@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a rich preview card that is generated using OpenGraph tags from a URL.
 /// </summary>
-public sealed class PreviewCard
+public sealed partial class PreviewCard
 {
     /// <summary>
     /// Location of linked resource.
