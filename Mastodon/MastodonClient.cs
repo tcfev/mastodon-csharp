@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Mastodon.Messages;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Mastodon;
 
@@ -137,16 +134,43 @@ partial class MastodonClient
             _client = client;
         }
 
+        /// <summary>
+        /// Obtain general information about the server.
+        /// </summary>
         public Task<Instance?> GetInstanceAsync()
         {
             return _client.http.GetFromJsonAsync<Instance>("api/v2/instance");
         }
 
+        /// <summary>
+        /// Domains that this instance is aware of.
+        /// </summary>
+        public Task<List<string>?> GetConnectedDomainsAsync()
+        {
+            return _client.http.GetFromJsonAsync<List<string>>("api/v1/instance/peers");
+        }
+
+
+        /// <summary>
+        /// Rules that the users of this service should follow.
+        /// </summary>
+        public Task<List<Rule>?> GetRulesAsync()
+        {
+            return _client.http.GetFromJsonAsync<List<Rule>>("api/v1/instance/rules");
+        }
+
+
+        /// <summary>
+        /// Obtain an extended description of this server.
+        /// </summary>
         public Task<ExtendedDescription?> GetExtendedDescriptionAsync()
         {
             return _client.http.GetFromJsonAsync<ExtendedDescription>("api/v1/instance/extended_description");
         }
 
+        /// <summary>
+        /// Obtain a list of domains that have been blocked.
+        /// </summary>
         public Task<List<DomainBlock>?> GetDomainBlocksAsync()
         {
             return _client.http.GetFromJsonAsync<List<DomainBlock>>("api/v1/instance/domain_block");
