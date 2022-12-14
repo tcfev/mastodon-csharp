@@ -1,21 +1,182 @@
 syntax = "proto3";
 
-import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
-
 option csharp_namespace = "Mastodon.Grpc";
 
-service Instance {
-  // Sends a greeting
-  rpc GetInstnace (google.protobuf.Empty) returns (InstanceData)
-  {
-	option (google.api.http) = {
-      get: "/api/v2/instance"
-    };
-  }
-}
+// The response message containing the Instance information.
+message Instance {
+    
+    // The domain name of the instance.
+    string domain = 1;
 
-// The response message containing the greetings.
-message InstanceData {
-  string description = 1;
+    // The title of the website.
+    string title = 2;
+
+    // The version of Mastodon installed on the instance.
+    string version = 3;
+
+    // The URL for the source code of the software running on this instance, in keeping with AGPL license requirements.
+    optional string sourceUrl = 4 [json_name="source_url"];
+
+    // A short, plain-text description defined by the admin.
+    string description = 5;
+
+    // Usage data for this instance.
+    Usage usage = 6;
+
+    // An image used to represent this instance.
+    Thumbnail thumbnail = 7;
+
+    // Primary languages of the website and its staff.
+    repeated string languages = 8;
+
+    // Configured values and limits for this website.
+    Configuration configuration = 9;
+
+    // Information about registering for this website.
+    Registrations registrations = 10;
+    
+    // Usage data for this instance.
+    message Usage
+    {
+        // Usage data related to users on this instance.
+        Users users = 1;
+        
+        // Usage data related to users on this instance.
+        message Users
+        {
+            // The number of active users in the past 4 weeks.
+            uint32 activeMonth = 1 [json_name="active_month"];
+        }
+    }
+
+    // An image used to represent this instance.
+    message Thumbnail
+    {
+        // The URL for the thumbnail image.
+        string url = 1;
+        
+        // A hash computed by the Blur algorithm, for generating colorful preview thumbnails when media has not been downloaded yet.
+        optional string blurhash = 2;
+
+        
+        // Links to scaled resolution images, for high DPI screens.
+        optional Versions versions = 3;
+
+        message Versions
+        {
+            // The URL for the thumbnail image at 1x resolution.
+            string oneX = 1 [json_name="@1x"];
+            
+            // The URL for the thumbnail image at 2x resolution.
+            string twoX = 2 [json_name="@2x"];
+        }
+    }
+
+    // Configured values and limits for this website.
+    message Configuration
+    {
+        // URLs of interest for clients apps.
+        Urls urls = 1;
+        
+        // Limits related to accounts.
+        Accounts accounts = 2;
+
+        // Limits related to authoring statuses.
+        Statuses statuses = 3;
+
+        // Hints for which attachments will be accepted.
+        optional MediaAttachments mediaAttachments = 4 [json_name="media_attachments"];
+
+        // Limits related to polls.
+        Polls polls = 5;
+        
+        // Hints related to translation.
+        Translation translation = 6;
+        
+        // URLs of interest for clients apps.
+        message Urls
+        {
+            // The Websockets URL for connecting to the streaming API.
+            string streaming = 1;
+        }
+        
+        // Limits related to accounts.
+        message Accounts
+        {
+            // The maximum number of featured tags allowed for each account.
+            optional uint32 maxFeaturedTags = 1 [json_name="max_featured_tags"];
+        }
+        
+        // Limits related to authoring statuses.
+        message Statuses
+        {
+            // The maximum number of allowed characters per status.
+            optional uint32 maxCharacters = 1 [json_name="max_characters"];
+            
+            // The maximum number of media attachments that can be added to a status.
+            optional uint32 maxMediaAttachments = 2 [json_name="max_media_attachments"];
+            
+            // Each URL in a status will be assumed to be exactly this many characters.
+            optional uint32 charactersReservedPerUrl = 3 [json_name="characters_reserved_per_url"];
+        }
+        
+        // Hints for which attachments will be accepted.
+        message MediaAttachments
+        {
+            // Contains MIME types that can be uploaded.
+            repeated string supportedMimeTypes = 1 [json_name="supported_mime_mypes"];
+            
+            // The maximum size of any uploaded image, in bytes.
+            uint32 imageSizeLimit = 2 [json_name="image_size_limit"];
+            
+            // The maximum number of pixels (width times height) for image uploads.
+            uint32 imageMatrixLimit = 3 [json_name="image_matrix_limit"];
+            
+            // The maximum size of any uploaded video, in bytes.
+            uint32 videoSizeLimit = 4 [json_name="video_size_limit"];
+            
+            // The maximum frame rate for any uploaded video.
+            uint32 videoFrameRateLimit = 5 [json_name="video_frame_rate_limit"];
+            
+            // The maximum number of pixels (width times height) for video uploads.
+            uint32 videoMatrixLimit = 6 [json_name="video_matrix_limit"];
+        }
+
+        // Limits related to polls.
+        message Polls
+        {
+            // Each poll is allowed to have up to this many options.
+            optional uint32 maxOptions = 1 [json_name="max_options"];
+            
+            // Each poll option is allowed to have this many characters.
+            optional uint32 maxCharactersPerOption = 2 [json_name="max_characters_per_option"];
+            
+            // The shortest allowed poll duration, in seconds.
+            optional uint32 minExpiration = 3 [json_name="min_expiration"];
+            
+            // The longest allowed poll duration, in seconds.
+            optional uint32 maxExpiration = 4 [json_name="max_expiration"];
+        }
+
+        // Hints related to translation.
+        message Translation
+        {
+            
+            // Whether the Translations API is available on this instance.
+            bool enabled = 1;
+        }
+    }
+
+    // Information about registering for this website.
+    message Registrations
+    {
+        // Whether registrations are enabled.
+         bool enabled = 1;
+
+        // Whether registrations require moderator approval.
+        optional bool approvalRequired = 2 [json_name="approval_required"];
+
+        // A custom message to be shown when registrations are closed.
+        optional string message = 3;
+    }
 }

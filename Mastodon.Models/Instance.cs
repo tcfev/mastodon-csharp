@@ -105,9 +105,9 @@ public sealed partial class Instance
         /// <summary>
         /// Links to scaled resolution images, for high DPI screens.
         /// </summary>
-        public ThumbnailVersions? Versions { get; set; }
+        public VersionsHash? Versions { get; set; }
 
-        public sealed partial class ThumbnailVersions
+        public sealed partial class VersionsHash
         {
             /// <summary>
             /// The URL for the thumbnail image at 1x resolution.
@@ -118,7 +118,7 @@ public sealed partial class Instance
             /// <summary>
             /// The URL for the thumbnail image at 2x resolution.
             /// </summary>
-            [JsonPropertyName("@12")]
+            [JsonPropertyName("@2x")]
             public string? _2x { get; set; }
         }
     }
@@ -193,7 +193,7 @@ public sealed partial class Instance
             /// <summary>
             /// The maximum number of featured tags allowed for each account.
             /// </summary>
-            public int? MaxFeaturedTags { get; set; }
+            public uint? MaxFeaturedTags { get; set; }
         }
 
         /// <summary>
@@ -204,17 +204,17 @@ public sealed partial class Instance
             /// <summary>
             /// The maximum number of allowed characters per status.
             /// </summary>
-            public int? MaxCharacters { get; set; }
+            public uint? MaxCharacters { get; set; }
 
             /// <summary>
             /// The maximum number of media attachments that can be added to a status.
             /// </summary>
-            public int? MaxMediaAttachments { get; set; }
+            public uint? MaxMediaAttachments { get; set; }
 
             /// <summary>
             /// Each URL in a status will be assumed to be exactly this many characters.
             /// </summary>
-            public int? CharactersReservedPerUrl { get; set; }
+            public uint? CharactersReservedPerUrl { get; set; }
         }
 
         /// <summary>
@@ -230,27 +230,27 @@ public sealed partial class Instance
             /// <summary>
             /// The maximum size of any uploaded image, in bytes.
             /// </summary>
-            public required int ImageSizeLimit { get; set; }
+            public required uint ImageSizeLimit { get; set; }
 
             /// <summary>
             /// The maximum number of pixels (width times height) for image uploads.
             /// </summary>
-            public required int ImageMatrixLimit { get; set; }
+            public required uint ImageMatrixLimit { get; set; }
 
             /// <summary>
             /// The maximum size of any uploaded video, in bytes.
             /// </summary>
-            public required int VideoSizeLimit { get; set; }
+            public required uint VideoSizeLimit { get; set; }
 
             /// <summary>
             /// The maximum frame rate for any uploaded video.
             /// </summary>
-            public required int VideoFrameRateLimit { get; set; }
+            public required uint VideoFrameRateLimit { get; set; }
 
             /// <summary>
             /// The maximum number of pixels (width times height) for video uploads.
             /// </summary>
-            public required int VideoMatrixLimit { get; set; }
+            public required uint VideoMatrixLimit { get; set; }
         }
 
         /// <summary>
@@ -261,22 +261,22 @@ public sealed partial class Instance
             /// <summary>
             /// Each poll is allowed to have up to this many options.
             /// </summary>
-            public int? MaxOptions { get; set; }
+            public uint? MaxOptions { get; set; }
 
             /// <summary>
             /// Each poll option is allowed to have this many characters.
             /// </summary>
-            public int? MaxCharactersPerOption { get; set; }
+            public uint? MaxCharactersPerOption { get; set; }
 
             /// <summary>
             /// The shortest allowed poll duration, in seconds.
             /// </summary>
-            public int? MinExpiration { get; set; }
+            public uint? MinExpiration { get; set; }
 
             /// <summary>
             /// The longest allowed poll duration, in seconds.
             /// </summary>
-            public int? MaxExpiration { get; set; }
+            public uint? MaxExpiration { get; set; }
         }
 
         /// <summary>

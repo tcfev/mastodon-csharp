@@ -11,6 +11,16 @@
 		<PackageReference Include="Google.Api.CommonProtos" Version="2.7.0" />
 	</ItemGroup>
 	<ItemGroup>
+		<Protobuf Include="account.proto" />
+		<Protobuf Include="card.proto" />
+		<Protobuf Include="emoji.proto" />
+		<Protobuf Include="filter.proto" />
 		<Protobuf Include="instance.proto" />
+		<Protobuf Include="mastodon.proto" />
+		<Protobuf Include="media.proto" />
+		<Protobuf Include="poll.proto" />
+		<Protobuf Include="rule.proto" />
+		<Protobuf Include="status.proto" />
+		<Protobuf Include="tag.proto" />
 	</ItemGroup>
 </Project>
