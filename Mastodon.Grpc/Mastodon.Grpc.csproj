@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="greet.proto" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Grpc.AspNetCore" Version="2.51.0-pre1" />
+		<PackageReference Include="Google.Api.CommonProtos" Version="2.7.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="greet.proto" />
+	</ItemGroup>
+</Project>
