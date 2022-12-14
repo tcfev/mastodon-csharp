@@ -8,8 +8,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Grpc.JsonTranscoding" Version="7.0.1" />
-		<ProjectReference Include="..\Mastodon.Grpc\Mastodon.Grpc.csproj" />
-		<ProjectReference Include="..\Mastodon.Models\Mastodon.Models.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Mastodon.Client\Mastodon.Client.csproj" />
+	  <ProjectReference Include="..\Mastodon.Grpc\Mastodon.Grpc.csproj" />
 	</ItemGroup>
 
 </Project>

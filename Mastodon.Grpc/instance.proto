@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "Mastodon.Grpc";
+
+service Instance {
+  // Sends a greeting
+  rpc GetInstnace (google.protobuf.Empty) returns (InstanceData)
+  {
+	option (google.api.http) = {
+      get: "/api/v2/instance"
+    };
+  }
+}
+
+// The response message containing the greetings.
+message InstanceData {
+  string description = 1;
+}
