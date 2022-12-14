@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "instance.proto";
+import "rule.proto";
+import "status.proto";
+
+option csharp_namespace = "Mastodon.Grpc";
+
+service Mastodon {
+  rpc GetInstance (google.protobuf.Empty) returns (Instance)
+  {
+	option (google.api.http) = {
+      get: "/api/v2/instance"
+    };
+  }
+  
+  rpc GetRules (google.protobuf.Empty) returns (Rules)
+  {
+	option (google.api.http) = {
+      get: "/api/v1/instance/rules"
+      response_body: "data"
+    };
+  }
+
+    
+  rpc GetPublicTimeline (google.protobuf.Empty) returns (Statuses)
+  {
+	option (google.api.http) = {
+      get: "/api/v1/timelines/public"
+      response_body: "data"
+    };
+  }
+}

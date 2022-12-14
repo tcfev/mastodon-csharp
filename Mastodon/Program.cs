@@ -1,5 +1,4 @@
-using Google.Rpc;
-using Mastodon.Service.Services;
+using Mastodon.Services;
 using Microsoft.AspNetCore.Http.Extensions;
 using System.Text;
 
@@ -10,12 +9,17 @@ builder.Services.AddGrpc().AddJsonTranscoding(options =>
     options.JsonSettings.WriteIndented = true;
 });
 
+builder.Services.AddGrpcReflection();
+
 builder.Services.AddSingleton(new Mastodon.Client.MastodonClient(new Uri("https://mastodon.lol")));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-app.MapGrpcService<InstnaceService>();
+app.UseGrpcWeb();
+
+app.MapGrpcService<MastodonService>().EnableGrpcWeb();
+app.MapGrpcReflectionService().EnableGrpcWeb();
+
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client.");
 
 app.MapFallback(async context =>

@@ -3,26 +3,67 @@ using Grpc.Core;
 using Mastodon.Client;
 using Mastodon.Grpc;
 
-namespace Mastodon.Service.Services
+namespace Mastodon.Services
 {
-    public class InstnaceService : Instance.InstanceBase
+    public class MastodonService : Mastodon.Grpc.Mastodon.MastodonBase
     {
         private readonly MastodonClient _mastodon;
-        private readonly ILogger<InstnaceService> _logger;
-        public InstnaceService(ILogger<InstnaceService> logger, MastodonClient mastodon)
+        private readonly ILogger<MastodonService> _logger;
+        public MastodonService(ILogger<MastodonService> logger, MastodonClient mastodon)
         {
             _logger = logger;
             _mastodon = mastodon;
         }
 
-        public override async Task<Grpc.InstanceData> GetInstnace(Empty request, ServerCallContext context)
+        public override async Task<Grpc.Instance> GetInstance(Empty request, ServerCallContext context)
         {
             var instance = (await _mastodon.Instance.GetInstanceAsync())!;
 
-            return new Grpc.InstanceData
+            instance.Domain = context.GetHttpContext().Request.Host.Value;
+
+            return instance.ToGrpc();
+        }
+
+        public override async Task<Rules> GetRules(Empty request, ServerCallContext context)
+        {
+            var result = (await _mastodon.Instance.GetRulesAsync());
+
+            var rules = new Rules();
+
+            if (result != null)
             {
-                Description = instance.Description,
-            };
+                foreach (var rule in result)
+                {
+                    var r = new Rule
+                    {
+                        Id = rule.Id,
+                        Text = rule.Text,
+                    };
+
+                    rules.Data.Add(r);
+                }
+            }
+
+
+            return rules;
+        }
+
+        public override async Task<Grpc.Statuses> GetPublicTimeline(Empty request, ServerCallContext context)
+        {
+            var result = (await _mastodon.Timeline.GetPublicAsync());
+
+            var statuses = new Grpc.Statuses();
+
+            if (result != null)
+            {
+                foreach (var r in result)
+                {
+                    statuses.Data.Add(r.ToGrpc());
+                }
+            }
+
+
+            return statuses;
         }
     }
 }

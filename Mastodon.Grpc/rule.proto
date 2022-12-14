@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "Mastodon.Grpc";
+
+// Represents a rule that server users should follow.
+message Rule {
+    // An identifier for the rule.
+    string Id  = 1;
+
+    // The rule to be followed.
+    string text = 2;
+}
+
+message Rules {
+   repeated Rule data = 1;
+}

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "Mastodon.Grpc";
+
+
+message Poll
+{
+    string id = 1;
+}

@@ -1,0 +1,138 @@
+syntax = "proto3";
+option csharp_namespace = "Mastodon.Grpc";
+
+import "google/protobuf/timestamp.proto";
+import "account.proto";
+import "card.proto";
+import "emoji.proto";
+import "filter.proto";
+import "media.proto";
+import "poll.proto";
+import "tag.proto";
+
+// Represents a status posted by an account.
+message Status
+{
+    // ID of the status in the database.
+    string id = 1;
+
+    // URI of the status used for federation.
+    string uri = 2;
+
+    // The date when this status was created.
+    google.protobuf.Timestamp createdAt = 3 [json_name="created_at"];
+    
+    // The account that authored this status.
+    Account account = 4;
+    
+    // HTML-encoded status content.
+    string content = 5;
+    
+    // Visibility of this status.
+    string visibility = 6;
+    
+    // Is this status marked as sensitive content.
+    bool sensitive = 7;
+    
+    // Subject or summary line, below which status content is collapsed until expanded.
+    string spoilerText = 8 [json_name="spoiler_text"];
+
+    repeated MediaAttachment mediaAttachments = 9 [json_name="media_attachments"];
+    
+    // The application used to post this status.
+    optional Application application = 10;
+    
+    // Mentions of users within the status content.
+    repeated Mention mentions = 11;
+    
+    // Hashtags used within the status content.
+    repeated Tag tags = 12;
+
+    // Custom emoji to be used when rendering status content.
+    repeated CustomEmoji emojis = 13;
+    
+    // How many boosts this status has received.
+    uint32 reblogsCount = 14 [json_name="reblogs_count"];
+    
+    // How many favourites this status has received.
+    uint32 favouritesCount = 15 [json_name="favourites_count"];
+
+    // How many replies this status has received.
+    uint32 repliesCount = 16 [json_name="replies_count"];
+    
+    // A link to the status’s HTML representation.
+    optional string url = 17;
+    
+    // ID of the status being replied to.
+    optional string inReplyToId = 18 [json_name="in_reply_to_id"];
+    
+    // ID of the account that authored the status being replied to.
+    optional string inReplyToAccountId = 19 [json_name="in_reply_to_account_id"];
+
+    // The status being reblogged.
+    optional Status reblog = 20;
+    
+    // The poll attached to the status.
+    optional Poll poll = 21;
+
+    // Preview card for links included within status content.
+    optional PreviewCard card = 22;
+    
+    // Primary language of this status.
+    optional string language = 23;
+    
+    // Plain-text source of a status. Returned instead of content when status is
+    // deleted, so the user may redraft from the source text without the client
+    // having to reverse-engineer the original text from the HTML content.
+    optional string text = 24;
+    
+    // Timestamp of when the status was last edited.
+    optional google.protobuf.Timestamp editedAt = 25 [json_name="edited_at"];
+    
+    // If the current token has an authorized user: Have you favourited this status?
+    optional bool favourited = 26;
+    
+    // If the current token has an authorized user: Have you boosted this status?
+    optional bool reblogged = 27;
+
+    // If the current token has an authorized user: Have you muted notifications for this status’s conversation?
+    optional bool muted = 28;
+    
+    // If the current token has an authorized user: Have you bookmarked this status?
+    optional bool bookmarked = 29;
+    
+    // If the current token has an authorized user: Have you pinned this status? Only appears if the status is pinnable.
+    optional bool pinned = 30;
+
+    // If the current token has an authorized user: The filter and keywords that matched this status.
+    repeated FilterResult filtered = 31;
+
+    message Application
+    {
+        // The name of the application that posted this status.
+        string name = 1;
+
+        // The website associated with the application that posted this status.
+        optional string website = 2;
+    }
+
+    message Mention
+    {
+        // The account ID of the mentioned user (cast from an integer, but not guaranteed to be a number).
+        string id = 1;
+        
+        // The username of the mentioned user.
+        string username = 2;
+        
+        // The location of the mentioned user’s profile.
+        string url = 3;
+        
+        // The webfinger acct: URI of the mentioned user. Equivalent to username for local users, or username@domain for remote users.
+        string acct = 4;
+    }
+}
+
+message Statuses
+{
+    repeated Status data = 1;
+}
