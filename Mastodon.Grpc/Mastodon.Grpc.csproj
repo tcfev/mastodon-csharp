@@ -19,6 +19,7 @@
 		<Protobuf Include="mastodon.proto" />
 		<Protobuf Include="media.proto" />
 		<Protobuf Include="poll.proto" />
+		<Protobuf Include="role.proto" />
 		<Protobuf Include="rule.proto" />
 		<Protobuf Include="status.proto" />
 		<Protobuf Include="tag.proto" />

@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "Mastodon.Grpc";
 
 // The response message containing the Instance information.
-message Instance {
-    
+message Instance
+{
     // The domain name of the instance.
     string domain = 1;
 
@@ -161,7 +161,6 @@ message Instance {
         // Hints related to translation.
         message Translation
         {
-            
             // Whether the Translations API is available on this instance.
             bool enabled = 1;
         }

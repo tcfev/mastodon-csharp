@@ -5,5 +5,5 @@ option csharp_namespace = "Mastodon.Grpc";
 
 message CustomEmoji
 {
-    string id = 1;
+    string shortcode = 1;
 }

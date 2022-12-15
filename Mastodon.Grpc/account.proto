@@ -2,8 +2,127 @@ syntax = "proto3";
 
 option csharp_namespace = "Mastodon.Grpc";
 
+import "google/protobuf/timestamp.proto";
+import "emoji.proto";
+import "role.proto";
 
+// Represents a user of Mastodon and their associated profile.
 message Account
 {
+     // The account id (cast from an integer, but not guaranteed to be a number).
     string id = 1;
+
+    // The username of the account, not including domain.
+    string username = 2;
+
+    // The Webfinger account URI. Equal to username for local users, or username@domain for remote users.
+    string acct = 3;
+
+    // The location of the user�s profile page.
+    string url = 4;
+
+    // The profile�s display name.
+    optional string displayName = 5 [json_name="display_name"];
+
+    // The profile�s bio or description.
+    string note = 6;
+
+    // An image icon that is shown next to statuses and in the profile.
+    string avatar = 7;
+
+    // A static version of the avatar. Equal to avatar if its value is a static image; different if avatar is an animated GIF.
+    optional string avatarStatic = 8 [json_name="avatar_static"];
+
+    // An image banner that is shown above the profile and in profile cards.
+    string header = 9;
+
+    // A static version of the header. Equal to header if its value is a static image; different if header is an animated GIF.
+    optional string headerStatic = 10 [json_name="header_static"];
+
+    // Whether the account manually approves follow requests.
+    bool locked = 11;
+
+    // Additional metadata attached to a profile as name-value pairs.
+    repeated Field fields = 12;
+
+    // Custom emoji entities to be used when rendering the profile.
+    repeated CustomEmoji emojis = 13;
+
+    // Indicates that the account may perform automated actions, may not be monitored, or identifies as a robot.
+    bool bot = 14;
+
+    // Indicates that the account represents a Group actor.
+    bool group = 15;
+
+    // Whether the account has opted into discovery features such as the profile directory.
+    optional bool discoverable = 16;
+
+    // Indicates that the profile is currently inactive and that its user has moved to a new account.
+    optional Account moved = 17;
+
+    // An extra attribute returned only when an account is suspended.
+    bool suspended = 18;
+
+    // An extra attribute returned only when an account is silenced. If true, indicates that the account should be hidden behing a warning screen.
+    bool limited = 19;
+
+    // When the account was created.
+    optional google.protobuf.Timestamp createdAt = 20;
+
+    // When the most recent status was posted.
+    optional google.protobuf.Timestamp lastStatusAt = 21;
+
+    // How many statuses are attached to this account.
+    optional uint32 statusesCount = 22;
+
+    // The reported followers of this profile.
+    optional uint32 followersCount = 23;
+
+    // The reported follows of this profile.
+    optional uint32 followingCount = 24;
+
+    // An extra attribute that contains source values to be used with API methods that verify credentials and update credentials.
+    optional Source source = 25;
+
+    // The role assigned to the currently authorized user.
+    optional Role role = 26;
+
+    // Additional metadata attached to a profile as name-value pairs.
+    message Field
+    {
+        // The key of a given field�s key-value pair.
+        string name = 1;
+        
+        // The value associated with the name key.
+        string value = 2;
+        
+        // Timestamp of when the server verified a URL value for a rel="me" link.
+        optional google.protobuf.Timestamp VerifiedAt = 3 [json_name="verified_at"];
+    }
+
+    // An extra attribute that contains source values to be used with API methods that verify credentials and update credentials.
+    message Source
+    {
+        // Profile bio, in plain-text instead of in HTML.
+        string note = 1;
+        
+        // Metadata about the account.
+        repeated Field fields = 2;
+        
+        // The default post privacy to be used for new statuses.
+        // public = Public post
+        // unlisted = Unlisted post
+        // private = Followers-only post
+        // direct = Direct post
+        string privacy = 3;
+
+        // Whether new statuses should be marked sensitive by default.
+        bool sensitive = 4;
+
+        // The default posting language for new statuses.
+        string language = 5;
+        
+        // The number of pending follow requests.
+        uint32 followRequestsCount = 6 [json_name="follow_requests_count"];
+    }
 }

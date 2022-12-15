@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "Mastodon.Grpc";
+
+message Role {
+    // The ID of the Role in the database.
+    string id  = 1;
+}
